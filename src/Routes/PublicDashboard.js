@@ -4,13 +4,14 @@ import Home from '../Containers/Home'
 import Login from '../Containers/Login'
 import Register from '../Containers/Register'
 
-const PublicDashbard = () => {
+const PublicDashboard = () => {
+  
   return (
     <Routes>
-        <Route path="/Login" element={<Login/>}/>
+        <Route path="/" element={<Login/>}/>
         <Route path="/Register" element={<Register/>}/>
     </Routes>
   )
 }
 
-export default PublicDashbard
+export default PublicDashboard

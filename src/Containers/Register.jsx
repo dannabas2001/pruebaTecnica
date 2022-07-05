@@ -1,9 +1,10 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { Formik, Form, Field } from 'formik'
 import * as Yup from 'yup';
 import { Boton, Imagen, Letras, Log, Parrafo, Redes, Titulo } from '../Styles/Login';
+import { actionRegisterSync } from '../Redux/actions/actionRegister';
 
 const SignupSchema = Yup.object().shape({
   name: Yup.string()
@@ -23,18 +24,23 @@ const SignupSchema = Yup.object().shape({
 });
 
 const Register = () => {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
   return (
     <Log><Imagen src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/2560px-International_Pok%C3%A9mon_logo.svg.png" alt="" /><Titulo>Sign Up</Titulo>
       <Formik
         initialValues={{
           name: "",
           email: "",
+          tel: "",
           password: "",
         }
         }
         validationSchema={SignupSchema}
         onSubmit={values => {
-          console.log(values.email, values.password)
+          console.log(values.name, values.email, values.password, values.tel)
+          dispatch(actionRegisterSync(values.name, values.email, values.password, values.tel))
+          navigate("/home")
         }}>
         {({ errors, touched }) => (
           <Form style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
