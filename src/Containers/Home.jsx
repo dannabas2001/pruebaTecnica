@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { getAuth } from 'firebase/auth'
-import { AiOutlineBell } from 'react-icons/ai'
+import { BiEdit } from 'react-icons/bi'
 import { IoLogOutOutline } from 'react-icons/io5'
 import { useDispatch, useSelector } from 'react-redux'
 import { ActionLogoutAsync } from '../Redux/actions/actionLogin'
@@ -30,7 +30,7 @@ const Home = () => {
   const navigate = useNavigate()
   return (
     <>
-      <Div><Perfil src={datos.photoURL !== null ? datos.photoURL : 'https://cdn-icons-png.flaticon.com/512/17/17004.png'} alt="" /> <p>Hi <br /> {datos.displayName} </p><IoLogOutOutline onClick={() => dispatch(ActionLogoutAsync())} style={{ color: "#2BE7E8", fontSize: "1.3rem" }} /></Div>
+      <Div><Perfil src={datos.photoURL !== null ? datos.photoURL : 'https://cdn-icons-png.flaticon.com/512/17/17004.png'} alt="" /> <p>Hi <br /> {datos.displayName} <BiEdit onClick={()=>navigate('/profile')}/> </p><IoLogOutOutline onClick={() => dispatch(ActionLogoutAsync())} style={{ color: "#2BE7E8", fontSize: "1.3rem" }} /></Div>
       <Titulo>Pokedex</Titulo>
       <ContTarjetas>{pokemones.map((element) => (
         <Pokemon key={element.order} onClick={()=>navigate(`/detalle/${element.id}`)}>
