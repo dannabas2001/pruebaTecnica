@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 import { Formik, Form, Field } from 'formik'
 import * as Yup from 'yup';
 import { Boton, Imagen, Letras, Log, Parrafo, Redes, Titulo } from '../Styles/Login';
-import { actionLogin, actionLoginAsync, loginGoogle } from '../Redux/actions/actionLogin';
+import { actionLogin, actionLoginAsync, loginFacebook, loginGoogle } from '../Redux/actions/actionLogin';
 
 const SignupSchema = Yup.object().shape({
   email: Yup.string()
@@ -44,7 +44,7 @@ const Login = () => {
     <Letras>Sign in with</Letras>
     <div>
     <Redes onClick={()=>dispatch(loginGoogle())}><img src="https://res.cloudinary.com/dcsn54xoj/image/upload/v1655944454/BuffaloMobileApp/google_zr4rji.png" alt="" /></Redes>
-    <Redes><img src="https://res.cloudinary.com/dcsn54xoj/image/upload/v1655944453/BuffaloMobileApp/facebook_fssqzz.png" alt="" /></Redes>
+    <Redes onClick={()=>dispatch(loginFacebook())}><img src="https://res.cloudinary.com/dcsn54xoj/image/upload/v1655944453/BuffaloMobileApp/facebook_fssqzz.png" alt="" /></Redes>
     </div>
     <Letras>Don't have an account? <Link to="/Register" style={{color:'#2BE7E8'}}> Sign Up</Link></Letras>
     </Log>

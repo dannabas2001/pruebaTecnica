@@ -1,5 +1,5 @@
-import { getAuth, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth"
-import { google } from "../Firebase/firebaseConfig"
+import { getAuth, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth"
+import { facebook, google } from "../Firebase/firebaseConfig"
 import { typesLogin } from "../types/types"
 
 
@@ -35,3 +35,36 @@ export const loginGoogle =()=>{
             console.warn(error,"Usuario NO Autorizado")
         })
     }}
+
+    export const loginFacebook=()=>{
+        return(dispatch)=>{
+            const auth =getAuth()
+            signInWithPopup(auth,facebook)
+            .then(({user})=>{
+                console.log(user,"Usuario Autorizado")
+            })
+            .catch(error=>{
+                console.warn(error,"Usuario NO Autorizado")
+                alert('Intente de nuevo con un correo diferente')
+            })
+        }
+    }
+    
+    export const ActionLogoutAsync=()=>{
+        return(dispatch)=>{
+            const auth = getAuth()
+            signOut(auth)
+            .then(({user})=>{
+                dispatch(ActionLogoutSync())
+                console.log('Logged out')
+            })
+            .catch((error)=>{console.warn(error,'')});
+        }
+    }
+    
+    export const ActionLogoutSync =()=>{
+        return{
+            type: typesLogin.logout
+        }
+    }
+    

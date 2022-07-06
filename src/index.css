@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap');
-
 *{
-  background-color:#191970;
   font-family: 'Kanit', sans-serif;
+}
+body{
+  background-color:#191970;
+  
 }
 
 .field{

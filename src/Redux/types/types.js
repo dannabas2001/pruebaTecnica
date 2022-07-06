@@ -6,3 +6,7 @@ export const typesLogin ={
 export const typesRegister={
     register:'[register] register'
 }
+
+export const typesPokemon ={
+    lista : 'lista de Pokemones'
+}
