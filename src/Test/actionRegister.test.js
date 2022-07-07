@@ -1,13 +1,7 @@
 import { getAuth } from 'firebase/auth';
-import configureStore  from 'redux-mock-store'
-import thunk from 'redux-thunk'
 import { actionRegister, actionRegisterSync } from '../Redux/actions/actionRegister';
 import { typesRegister } from '../Redux/types/types';
 
-
-const middlewares = [thunk]
-
-const mockStore = configureStore(middlewares)
 
 const initialState={
     name:'',
@@ -17,7 +11,6 @@ const initialState={
     
 };
 
-let store = mockStore(initialState)
 
 describe('Pruebas Register', ()=>{
 

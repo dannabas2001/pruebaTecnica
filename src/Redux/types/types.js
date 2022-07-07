@@ -8,5 +8,5 @@ export const typesRegister={
 }
 
 export const typesPokemon ={
-    lista : 'lista de Pokemones'
+    lista : '[listar] lista de Pokemones'
 }

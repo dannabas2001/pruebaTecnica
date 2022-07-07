@@ -15,25 +15,6 @@ const initialState={
 let store = mockStore(initialState)
 
 describe('Pruebas Login Async', ()=>{
-    beforeEach(()=>{
-        store= mockStore(initialState)})
-    test('Inicio de Sesión', async()=>{
-        await store.dispatch(actionLoginAsync({email:'dannabas2001@gmail.com', password:'Hola1234'}))
-        const actions = store.getActions()
-    })
-    test('Inicio sincronico', ()=>{
-        const email = 'hola@hola.com'
-        const password = 'Hola1234'
-
-        const loginAction = actionLogin( email,password);
-        expect (loginAction).toEqual({
-            type:typesLogin.login,
-            payload:{
-                email,password
-            }
-        })
-    })
-
     test ('Cerrar Sesión', ()=>{
         const email = 'hola@hola.com'
         const password = 'Hola1234'
@@ -42,5 +23,16 @@ describe('Pruebas Login Async', ()=>{
             type:typesLogin.logout
         })
         
+    })
+    test('Inicio sincronico', ()=>{
+        const email = 'hola@hola.com'
+        const password = 'Hola1234'
+        const loginAction = actionLogin( email,password);
+        expect (loginAction).toEqual({
+            type:typesLogin.login,
+            payload:{
+                email,password
+            }
+        })
     })
 })
